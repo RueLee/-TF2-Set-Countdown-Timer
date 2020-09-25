@@ -1,10 +1,12 @@
 "Updater" {
 	"Information" {
 		"Version" {
-			"Latest"	"0.1.1"
+			"Latest"	"0.1.2"
 		}
 		
 	}
+	
+	"Notes"	"- Fixed updater and grammatical issue"
 	
 	"Files" {
 		"Plugin"	"Path_SM/addons/sourcemod/plugins/setcountdown.smx"
