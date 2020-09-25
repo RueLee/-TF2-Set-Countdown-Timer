@@ -1,0 +1,14 @@
+"Updater" {
+	"Information" {
+		"Version" {
+			"Latest"	"0.1.1"
+		}
+		
+	}
+	
+	"Files"
+	{
+		"Plugin"	"addons/sourcemod/plugins/setcountdown.smx"
+		"Source"	"addons/sourcemod/scripting/setcountdown.sp"
+	}
+}
