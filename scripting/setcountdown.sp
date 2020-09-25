@@ -4,7 +4,8 @@
 #include <multicolors>
 #include <updater>
 
-#define PLUGIN_VERSION	"0.1.1"
+#undef REQUIRE_PLUGIN
+#define PLUGIN_VERSION	"0.1.2"
 #define ALARM_TRIGGER	"mvm/mvm_cpoint_klaxon.wav"
 #define UPDATE_URL		"https://github.com/RueLee/-TF2-Set-Countdown-Timer/blob/master/updater.txt"
 
@@ -78,7 +79,7 @@ public Action CmdSetCountdown(int client, int args) {
 	}
 	
 	if (g_ballowCountdown) {
-		ReplyToCommand(client, "[SM] Timer is already declared by someone. Please wait until the timer is not running.");
+		ReplyToCommand(client, "[SM] Timer is already declared by someone. Please wait until the timer is finished.");
 		return Plugin_Handled;
 	}
 	
