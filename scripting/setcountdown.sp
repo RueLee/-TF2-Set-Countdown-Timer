@@ -124,12 +124,11 @@ public Action CmdSetCountdown(int client, int args) {
 	g_iMinutes = g_iHours % 60;
 	g_iHours /= 60;
 	
-	PrintToChat(client, "[SM] Set countdown on %s", target_name);
-	PrintToChat(g_iTarget, "[SM] %N has declared a countdown timer for %d:%02d:%02d!", client, g_iHours, g_iMinutes, g_iSeconds);
 	g_ballowCountdown = true;
 	g_hTimerTick = CreateTimer(1.0, Timer_Count, GetClientUserId(client), TIMER_REPEAT|TIMER_FLAG_NO_MAPCHANGE);
 	g_hUpdatePanel = CreateTimer(0.5, Timer_PanelCount, GetClientUserId(client), TIMER_REPEAT|TIMER_FLAG_NO_MAPCHANGE);
-	
+	PrintToChat(client, "[SM] Set countdown on %s", target_name);
+	PrintToChat(g_iTarget, "[SM] %N has declared a countdown timer for %d:%02d:%02d!", client, g_iHours, g_iMinutes, g_iSeconds);
 	return Plugin_Handled;
 }
 
