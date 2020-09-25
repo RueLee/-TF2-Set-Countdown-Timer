@@ -7,7 +7,7 @@
 	}
 	
 	"Files" {
-		"Plugin"	"addons/sourcemod/plugins/setcountdown.smx"
-		"Source"	"addons/sourcemod/scripting/setcountdown.sp"
+		"Plugin"	"Path_SM/addons/sourcemod/plugins/setcountdown.smx"
+		"Source"	"Path_SM/addons/sourcemod/scripting/setcountdown.sp"
 	}
 }
