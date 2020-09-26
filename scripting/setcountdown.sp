@@ -5,7 +5,7 @@
 #include <updater>
 
 #undef REQUIRE_PLUGIN
-#define PLUGIN_VERSION	"0.1.2"
+#define PLUGIN_VERSION	"0.1.3"
 #define ALARM_TRIGGER	"mvm/mvm_cpoint_klaxon.wav"
 #define UPDATE_URL		"https://github.com/RueLee/-TF2-Set-Countdown-Timer/blob/master/updater.txt"
 
@@ -45,7 +45,7 @@ public OnPluginStart() {
 	
 	RegAdminCmd("sm_setcountdown", CmdSetCountdown, ADMFLAG_CHANGEMAP, "Set a target to start a timer.");
 	RegAdminCmd("sm_settimer", CmdSetCountdown, ADMFLAG_CHANGEMAP, "Set a target to start a timer.");
-	RegAdminCmd("sm_stoptimer", CmdStopTimer, ADMFLAG_CHANGEMAP, "Start a timer after when a target is declared.");
+	RegAdminCmd("sm_stoptimer", CmdStopTimer, ADMFLAG_CHANGEMAP, "Stops the timer while a target is already declared.");
 }
 
 public OnPluginEnd() {
