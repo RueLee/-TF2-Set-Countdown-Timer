@@ -18,6 +18,6 @@ Access flag: g
 sm_setcountdown <#userid|name> [seconds]
 - Set a target to start a timer.
 sm_stoptimer <#userid|name>
-- Stops the timer while a target is already declared.
+- Stops the timer while a player has countdown timer running.
 ```
 Note: After you call a countdown on someone, you cannot call again until your target has reached the end of the time. If you decide to stop the timer, type `sm_stoptimer <#userid|name>`.
