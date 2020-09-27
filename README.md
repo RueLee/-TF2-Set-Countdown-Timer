@@ -17,7 +17,7 @@ sm_countdown_enabled | Default: 1
 Access flag: g
 sm_setcountdown <#userid|name> [seconds]
 Alias: sm_settimer
-- Call a target to start a timer.
+- Calls a target to start a timer.
 sm_stoptimer <#userid|name>
 - Stops the timer while a player has countdown timer running.
 ```
