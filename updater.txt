@@ -1,12 +1,13 @@
 "Updater" {
 	"Information" {
 		"Version" {
-			"Latest"	"0.1.3"
+			"Latest"	"0.1.4"
 		}
 		
 	}
 	
-	"Notes"	"- Fixed some command description."
+	"Notes"	"- Players can now call on others while someone has a timer running."
+	"Notes"	"- Fixed few countdown issues."
 	
 	"Files" {
 		"Plugin"	"Path_SM/addons/sourcemod/plugins/setcountdown.smx"
