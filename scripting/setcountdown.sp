@@ -5,7 +5,7 @@
 #include <updater>
 
 #undef REQUIRE_PLUGIN
-#define PLUGIN_VERSION	"0.1.4"
+#define PLUGIN_VERSION	"0.1.5"
 #define ALARM_TRIGGER	"mvm/mvm_cpoint_klaxon.wav"
 #define UPDATE_URL		"https://github.com/RueLee/-TF2-Set-Countdown-Timer/blob/master/updater.txt"
 
@@ -40,8 +40,7 @@ public OnPluginStart() {
 	
 	if (LibraryExists("updater")) {
         Updater_AddPlugin(UPDATE_URL);
-    }
-	
+	}
 	
 	for (int i = 0; i < MaxClients; i++) {
 		delete g_hTimerTick[i];
@@ -79,17 +78,17 @@ public OnClientDisconnect(int client) {
 
 public Action CmdSetCountdown(int client, int args) {
 	if (g_hcountdownEnabled.IntValue == 0) {
-		ReplyToCommand(client, "[SM] Countdown Timer plugin is currently disabled!");
+		CReplyToCommand(client, "{orange}[SM] {default}Countdown Timer plugin is currently disabled!");
 		return Plugin_Handled;
 	}
 	
 	if (!g_bAllowTarget[client]) {
-		ReplyToCommand(client, "[SM] You cannot call another player while the timer is running!");
+		CReplyToCommand(client, "{orange}[SM] {default}You cannot call another player while the timer is running!");
 		return Plugin_Handled;
 	}
 	
 	if (args != 2) {
-		ReplyToCommand(client, "[SM] Usage: sm_setcountdown <#userid|name> [seconds]");
+		CReplyToCommand(client, "{orange}[SM] {default}Usage: sm_setcountdown <#userid|name> [seconds]");
 		return Plugin_Handled;
 	}
 	
@@ -100,7 +99,7 @@ public Action CmdSetCountdown(int client, int args) {
 	int seconds = StringToInt(secondsArg);
 	
 	if (seconds < 1) {
-		ReplyToCommand(client, "[SM] Please enter a value greater than 0.");
+		CReplyToCommand(client, "{orange}[SM] {default}Please enter a value greater than 0.");
 		return Plugin_Handled;
 	}
 	
@@ -111,12 +110,12 @@ public Action CmdSetCountdown(int client, int args) {
 	}
 	
 	if (!IsPlayerAlive(iTarget)) {
-		ReplyToCommand(client, "[SM] Your target, %N, must be alive!", iTarget);
+		CReplyToCommand(client, "{orange}[SM] {default}Your target, {aquamarine}%N{default}, must be alive!", iTarget);
 		return Plugin_Handled;
 	}
 	
 	if (g_hTimerTick[iTarget] != null) {
-		ReplyToCommand(client, "[SM] Countdown is already triggered to this player.");
+		CReplyToCommand(client, "{orange}[SM] {default}Countdown is already triggered to this player.");
 		return Plugin_Handled;
 	}
 	
@@ -130,8 +129,8 @@ public Action CmdSetCountdown(int client, int args) {
 	
 	g_bAllowTarget[client] = false;
 	
-	CPrintToChat(client, "{orange}[SM] {default}Set countdown on {aqua}%N{default}.", iTarget);
-	CPrintToChat(iTarget, "{orange}[SM] {aqua}%N {default}has declared a countdown timer for {gold}%d:%02d:%02d{default}!", client, g_iHours, g_iMinutes, g_iSeconds);
+	CPrintToChat(client, "{orange}[SM] {default}Set countdown on {aquamarine}%N{default}.", iTarget);
+	CPrintToChat(iTarget, "{orange}[SM] {aquamarine}%N {default}has declared a countdown timer for {gold}%d:%02d:%02d{default}!", client, g_iHours, g_iMinutes, g_iSeconds);
 	return Plugin_Handled;
 }
 
@@ -146,11 +145,12 @@ public Action Timer_PanelCount(Handle hTimer, any cID) {
 	FormatEx(buffer, sizeof(buffer), "Timeleft: %d:%02d:%02d", g_iHours, g_iMinutes, g_iSeconds);
 	FormatEx(timeExpiration, sizeof(timeExpiration), "Time Expired: No");
 	
-	if (g_iHours == 0 && g_iMinutes == 0 && g_iSeconds == 0) {
-		CloseHandle(g_hUpdatePanel[client]);
-		g_hUpdatePanel[client] = null;
-		g_bAllowTarget[client] = true;
+	if (g_iHours == 0 && g_iMinutes == 0 && g_iSeconds == 1) {
 		FormatEx(timeExpiration, sizeof(timeExpiration), "Time Expired: Yes");
+	}
+	
+	if (g_iHours == 0 && g_iMinutes == 0 && g_iSeconds == 0) {
+		g_bAllowTarget[client] = true;
 	}
 	
 	Panel hpanel = new Panel();
@@ -184,14 +184,14 @@ public Action CmdStopTimer(int client, int args) {
 	if (g_hTimerTick[iTarget] != null) {
 		CloseHandle(g_hTimerTick[iTarget]);
 		g_hTimerTick[iTarget] = null;
-		CloseHandle(g_hUpdatePanel[client]);
-		g_hUpdatePanel[client] = null;
+		CloseHandle(g_hUpdatePanel[iTarget]);
+		g_hUpdatePanel[iTarget] = null;
 		g_bAllowTarget[client] = true;
-		PrintToChat(client, "[SM] Terminated countdown operation!");
-		PrintToChat(iTarget, "[SM] %N has stopped the countdown!", client);
+		CPrintToChat(client, "{orange}[SM] {default}Terminated countdown operation!");
+		CPrintToChat(iTarget, "{orange}[SM] {aquamarine}%N {default}has stopped the countdown!", client);
 	}
 	else {
-		PrintToChat(client, "[SM] The countdown timer is not running!");
+		PrintToChat(client, "{orange}[SM] {default}The countdown timer is not running on this player!");
 	}
 	return Plugin_Handled;
 }
@@ -219,7 +219,9 @@ public Action Timer_Count(Handle hTimer, any cID) {
 	if (g_iHours == 0 && g_iMinutes == 0 && g_iSeconds == 0) {
 		CloseHandle(g_hTimerTick[client]);
 		g_hTimerTick[client] = null;
-		CPrintToChat(client, "{green}[SM] {fullred}Time is up!");
+		CloseHandle(g_hUpdatePanel[client]);
+		g_hUpdatePanel[client] = null;
+		CPrintToChat(client, "{orange}[SM] {fullred}Time is up!");
 		EmitSoundToClient(client, ALARM_TRIGGER, SOUND_FROM_PLAYER, SNDCHAN_AUTO, SNDLEVEL_NORMAL, SND_NOFLAGS, 0.4);
 	}
 	return Plugin_Continue;
