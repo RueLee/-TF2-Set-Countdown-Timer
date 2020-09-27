@@ -1,13 +1,13 @@
 "Updater" {
 	"Information" {
 		"Version" {
-			"Latest"	"0.1.4"
+			"Latest"	"0.1.5"
 		}
 		
 	}
 	
-	"Notes"	"- Players can now call on others while someone has a timer running."
-	"Notes"	"- Added some colors on the chat command."
+	"Notes"	"- Fixed panel loop."
+	"Notes"	"- Added more colors in the chat command."
 	"Notes"	"- Fixed few countdown issues."
 	
 	"Files" {
