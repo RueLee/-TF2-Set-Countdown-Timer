@@ -177,17 +177,10 @@ public Action CmdStopTimer(int client, int args) {
 	
 	int iTarget = FindTarget(client, arg, false, false);
 	
-	if (iTarget == -1 || !IsPlayerAlive(iTarget)) {
+	if (iTarget == -1) {
 		return Plugin_Handled;
 	}
-	/*
-	if (!args) {
-		if (iTarget) {
-			delete g_hTimerTick[iTarget];
-		}
-		return Plugin_Handled;
-	}
-	*/
+	
 	if (g_hTimerTick[iTarget] != null) {
 		CloseHandle(g_hTimerTick[iTarget]);
 		g_hTimerTick[iTarget] = null;
