@@ -48,8 +48,8 @@ public OnPluginStart() {
 		g_bAllowTarget[i] = true;
 	}
 	
-	RegAdminCmd("sm_setcountdown", CmdSetCountdown, ADMFLAG_CHANGEMAP, "Set a target to start a timer.");
-	RegAdminCmd("sm_settimer", CmdSetCountdown, ADMFLAG_CHANGEMAP, "Set a target to start a timer.");
+	RegAdminCmd("sm_setcountdown", CmdSetCountdown, ADMFLAG_CHANGEMAP, "Calls a target to start a timer.");
+	RegAdminCmd("sm_settimer", CmdSetCountdown, ADMFLAG_CHANGEMAP, "Calls a target to start a timer.");
 	RegAdminCmd("sm_stoptimer", CmdStopTimer, ADMFLAG_CHANGEMAP, "Stops the timer while a target is already declared.");
 }
 
