@@ -5,7 +5,7 @@
 #include <updater>
 
 #undef REQUIRE_PLUGIN
-#define PLUGIN_VERSION	"0.1.5"
+#define PLUGIN_VERSION	"0.1.6"
 #define ALARM_TRIGGER	"mvm/mvm_cpoint_klaxon.wav"
 #define UPDATE_URL		"https://github.com/RueLee/-TF2-Set-Countdown-Timer/blob/master/updater.txt"
 
