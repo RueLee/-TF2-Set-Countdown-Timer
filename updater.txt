@@ -1,14 +1,12 @@
 "Updater" {
 	"Information" {
 		"Version" {
-			"Latest"	"0.1.5"
+			"Latest"	"0.1.6"
 		}
 		
 	}
 	
-	"Notes"	"- Fixed panel loop."
-	"Notes"	"- Added more colors in the chat command."
-	"Notes"	"- Fixed few countdown issues."
+	"Notes"	"- Fixed client conditions when the plugin starts."
 	
 	"Files" {
 		"Plugin"	"Path_SM/addons/sourcemod/plugins/setcountdown.smx"
