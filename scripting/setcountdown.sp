@@ -42,11 +42,7 @@ public OnPluginStart() {
         Updater_AddPlugin(UPDATE_URL);
 	}
 	
-	for (int i = 0; i < MaxClients; i++) {
-		delete g_hTimerTick[i];
-		delete g_hUpdatePanel[i];
-		g_bAllowTarget[i] = true;
-	}
+	ClearFormat();
 	
 	RegAdminCmd("sm_setcountdown", CmdSetCountdown, ADMFLAG_CHANGEMAP, "Calls a target to start a timer.");
 	RegAdminCmd("sm_settimer", CmdSetCountdown, ADMFLAG_CHANGEMAP, "Calls a target to start a timer.");
@@ -58,7 +54,7 @@ public OnMapEnd() {
 }
 
 public void ClearFormat() {
-	for (int i = 0; i < MaxClients; i++) {
+	for (int i = 1; i <= MaxClients; i++) {
 		delete g_hTimerTick[i];
 		delete g_hUpdatePanel[i];
 		g_bAllowTarget[i] = true;
@@ -166,8 +162,6 @@ public Action Timer_PanelCount(Handle hTimer, any cID) {
 	hpanel.Send(client, RunTimer, 0);
 	CloseHandle(hpanel);
 	
-	
-	
 	return Plugin_Continue;
 }
 
@@ -216,6 +210,7 @@ public Action Timer_Count(Handle hTimer, any cID) {
 			}
 		}
 	}
+	
 	if (g_iHours == 0 && g_iMinutes == 0 && g_iSeconds == 0) {
 		CloseHandle(g_hTimerTick[client]);
 		g_hTimerTick[client] = null;
