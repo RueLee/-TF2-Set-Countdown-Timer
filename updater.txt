@@ -1,13 +1,15 @@
 "Updater" {
 	"Information" {
 		"Version" {
-			"Latest"	"0.1.6"
+			"Latest"	"0.1.7"
 		}
 		
 	}
 	
-	"Notes"	"- Fixed client conditions when the plugin starts."
-	
+	"Notes"	"-This plugin will only call once. Once the target is being declared, all admins will not be able to use it until the target has reached the end of time."
+	"Notes" "-Fixed cilent failed to call another after target's end time."
+	"Notes" "-Added admin message when target is being called."
+
 	"Files" {
 		"Plugin"	"Path_SM/addons/sourcemod/plugins/setcountdown.smx"
 		"Source"	"Path_SM/addons/sourcemod/scripting/setcountdown.sp"
