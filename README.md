@@ -1,9 +1,8 @@
 # -TF2-Set-Countdown-Timer
 This plugin allows player to set a countdown timer on someone.
 
-**Required plugin:**
-
-[Updater](https://forums.alliedmods.net/showthread.php?t=169095)
+* **Required plugin:**
+  * [Updater](https://forums.alliedmods.net/showthread.php?t=169095)
 
 
 **ConVars:**
