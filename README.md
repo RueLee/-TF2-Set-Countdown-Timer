@@ -2,16 +2,16 @@
 This plugin allows player to set a countdown timer on someone.
 
 * **Required plugin:**
-  * [Updater](https://forums.alliedmods.net/showthread.php?t=169095)
+* [Updater](https://forums.alliedmods.net/showthread.php?t=169095)
 
 
-**ConVars:**
+* **ConVars:**
 ```
 sm_countdown_enabled | Default: 1
 - Enable/Disable plugin.
 ```
 
-**Commands:**
+* **Commands:**
 ```
 Access flag: g
 sm_setcountdown <#userid|name> [seconds]
