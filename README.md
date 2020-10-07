@@ -3,7 +3,8 @@ This plugin allows player to set a countdown timer on someone.
 
 **Required plugin:**
 
--updater.smx
+-updater
+[Github](https://forums.alliedmods.net/showthread.php?t=169095)
 
 
 **ConVars:**
