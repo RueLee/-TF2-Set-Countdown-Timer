@@ -1,14 +1,16 @@
 "Updater" {
 	"Information" {
 		"Version" {
-			"Latest"	"0.1.7"
+			"Latest"	"0.1.8"
 		}
 		
 	}
 	
-	"Notes"	"-This plugin will only call once. Once the target is being declared, all admins will not be able to use it until the target has reached the end of time."
-	"Notes" "-Fixed cilent failed to call another after target's end time."
-	"Notes" "-Added admin message when target is being called."
+	"Notes"	"-Multiplayer support (Players can now call someone while one has timer running to a target. However, client cannot call to a target that have timer already running.)"
+	"Notes" "-Added ConVar: sm_countdown_adminlog"
+	"Notes" "-Added Command: sm_timeleftcountdown"
+	"Notes" "-Updated Panel"
+	"Notes" "-Fixed sm_countdown_enabled when the plugin is disabled to some commands."
 
 	"Files" {
 		"Plugin"	"Path_SM/addons/sourcemod/plugins/setcountdown.smx"
