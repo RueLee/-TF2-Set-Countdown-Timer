@@ -1,16 +1,13 @@
 "Updater" {
 	"Information" {
 		"Version" {
-			"Latest"	"0.1.8"
+			"Latest"	"0.1.9"
 		}
 		
 	}
 	
-	"Notes"	"-Multiplayer support (Players can now call someone while one has timer running to a target. However, client cannot call to a target that have timer already running.)"
-	"Notes" "-Added ConVar: sm_countdown_adminlog"
-	"Notes" "-Added Command: sm_timeleftcountdown"
-	"Notes" "-Updated Panel"
-	"Notes" "-Fixed sm_countdown_enabled when the plugin is disabled to some commands."
+	"Notes"	"-The Updater plugin is now optional."
+	"Notes" "-Fixed panel view when the time did not call it has expired."
 
 	"Files" {
 		"Plugin"	"Path_SM/addons/sourcemod/plugins/setcountdown.smx"

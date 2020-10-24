@@ -1,11 +1,13 @@
 #pragma semicolon 1
+
 #include <sourcemod>
 #include <sdktools>
 #include <multicolors>
-#include <updater>
 
 #undef REQUIRE_PLUGIN
-#define PLUGIN_VERSION	"0.1.8"
+#include <updater>
+
+#define PLUGIN_VERSION	"0.1.9"
 #define ALARM_TRIGGER	"mvm/mvm_cpoint_klaxon.wav"
 #define UPDATE_URL		"https://github.com/RueLee/-TF2-Set-Countdown-Timer/blob/master/updater.txt"
 
@@ -233,6 +235,13 @@ public Action Timer_Count(Handle hTimer, any cID) {
 	FormatEx(buffer, sizeof(buffer), "Timeleft: %d:%02d:%02d", hr, min, sec);
 	FormatEx(timeExpiration, sizeof(timeExpiration), "Time Expired: No");
 	
+	if (hr == 0 && min == 0 && sec == 0) {
+		FormatEx(timeExpiration, sizeof(timeExpiration), "Time Expired: Yes");
+		g_bAllowTarget[client] = true;
+		CPrintToChat(client, "{orange}[SM] {fullred}Time is up!");
+		EmitSoundToClient(client, ALARM_TRIGGER, SOUND_FROM_PLAYER, SNDCHAN_AUTO, SNDLEVEL_NORMAL, SND_NOFLAGS, 0.4);
+	}
+	
 	Panel hpanel = new Panel();
 	
 	hpanel.SetTitle("===[Countdown Timer]===");
@@ -247,12 +256,6 @@ public Action Timer_Count(Handle hTimer, any cID) {
 	hpanel.Send(client, RunTimer, 0);
 	CloseHandle(hpanel);
 	
-	if (hr == 0 && min == 0 && sec == 0) {
-		FormatEx(timeExpiration, sizeof(timeExpiration), "Time Expired: Yes");
-		g_bAllowTarget[client] = true;
-		CPrintToChat(client, "{orange}[SM] {fullred}Time is up!");
-		EmitSoundToClient(client, ALARM_TRIGGER, SOUND_FROM_PLAYER, SNDCHAN_AUTO, SNDLEVEL_NORMAL, SND_NOFLAGS, 0.4);
-	}
 	return Plugin_Continue;
 }
 
